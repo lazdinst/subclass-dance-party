@@ -28,16 +28,4 @@ describe('blinkyDancer', function() {
       expect(blinkyDancer.step.callCount).to.be.equal(2);
     });
   });
-});
-
-// describe('talisDancer', function() {
-  
-//   var talisDancer, clock;
-//   var timeBetweenSteps = 100;
-  
-//   beforeEach(function() {
-//     clock = sinon.useFakeTimers();
-//     talisDancer = new talisDancer()
-//   })
-  
-// });
+}); 

@@ -24,5 +24,15 @@ Dancer.prototype.setPosition = function () {
   };
   
   this.$node.css(styleSettings);
-  return this.$node;
+  //return this.$node;
+};
+
+Dancer.prototype.lineUp = function(top, left) {
+  var styleSettings = {
+    position: 'relative',
+    top: top, // fixed,
+    left: left //Width of the page / the dancers array length
+  };
+  console.log(styleSettings);
+  this.$node.css(styleSettings);
 };

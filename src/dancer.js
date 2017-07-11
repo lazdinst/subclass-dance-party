@@ -5,6 +5,7 @@ var Dancer = function (top, left, timeBetweenSteps) {
   this.left = left;
   this.timeBetweenSteps = timeBetweenSteps;
   this.step();
+  this.setPosition();
 };
 
 Dancer.prototype.step = function () {
@@ -17,8 +18,6 @@ Dancer.prototype.step = function () {
 };
 
 Dancer.prototype.setPosition = function () {
-// Use css top and left properties to position our <span> tag
-// where it belongs on the page. See http://api.jquery.com/css/
   var styleSettings = {
     top: this.top,
     left: this.left

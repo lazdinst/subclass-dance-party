@@ -2,25 +2,9 @@ $(document).ready(function() {
   window.dancers = [];
 
   $('.addDancerButton').on('click', function(event) {
-    /* This function sets up the click handlers for the create-dancer
-     * buttons on dancefloor.html. You should only need to make one small change to it.
-     * As long as the "data-data-dancer-line-up" attribute of a
-     * class="addDancerButton" DOM node matches one of the names of the
-     * maker functions available in the global scope, clicking that node
-     * will call the function to make the dancer.
-     */
-
-    /* dancerMakerFunctionName is a string which must match
-     * one of the dancer maker functions available in global scope.
-     * A new object of the given type will be created and added
-     * to the stage.
-     */
     var dancerMakerFunctionName = $(this).data('dancer-maker-function-name');
-
-    // get the maker function for the kind of dancer we're supposed to make
     var dancerMakerFunction = window[dancerMakerFunctionName];
 
-    // make a dancer with a random position
     var dancer = new dancerMakerFunction(
       $('body').height() * Math.random(),
       $('body').width() * Math.random(),
@@ -35,18 +19,57 @@ $(document).ready(function() {
     // debugger;
     let top = 500;
     let left;
-    for (let i = 0; i < window.dancers.length; i++) {
-      if (window.dancers.length) {
-        left = $('body').width() / 2;
+    var screenWidth = $('body').width();
+    var currentDancers = window.dancers;
+    
+    for (let i = 0; i < currentDancers.length; i++) {
+      if (currentDancers.length === 1) {
+        left = screenWidth / 2;
       } else {
         //Window 1600
         //1600 / 4 = 400
-        
-        
-        
-        left = window.dancers[i - 1].left + $('body').width() / window.dancers.length;
+        if (i === 0) {
+          initialLeft = screenWidth / (currentDancers.length + 1);
+          left = initialLeft;
+        } else {
+          left += initialLeft;
+        }
       }
-      window.dancers[i].lineUp(top, left);
+      currentDancers[i].lineUp(top, left);
     }
+  });  
+  
+  $('.getCloseButton').on('click', function() {
+    debugger;
+    window.dancers.forEach(dancer => dancer.getClose());
   });
+  
+  $('body').on('mouseenter', '.talisDancer', function() {
+    $('.talisDancer').css('border', '20px solid red');
+  });
+  
+  $('body').on('mouseleave', '.talisDancer', function() {
+    $('.talisDancer').css('border', '20px solid blue');
+  });
+  
+  $('body').on('mouseenter', '.corgiDancer', function() {
+    var styleSettings = {
+      width: 300,
+      height: 300
+    };
+    $('.corgiDancer').css(styleSettings);
+  });
+  
+  $('body').on('mouseleave', '.corgiDancer', function() {
+    var styleSettings = {
+      width: 150,
+      height: 150
+    };
+    $('.corgiDancer').css(styleSettings);
+  });
+  
 });
+
+//We need a max window size
+//Size of window i.e 1600, 
+// take percent of window (5%)

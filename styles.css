@@ -3,7 +3,8 @@ body, html{
 }
 body{
   margin: 0px;
-  background-color:#444;
+  /*background-color:#444;*/
+  background-image: url("http://i.imgur.com/nyFQHhZ.jpg");
   font-size: 18px;
 }
 body, a:link, a:visited, a:active{
@@ -17,7 +18,7 @@ body, a:link, a:visited, a:active{
   height:32px;
   background-color: #555;
 }
-.title{
+.titletitle{
   background-color: #777;
 }
 .dancer{
@@ -29,11 +30,31 @@ body, a:link, a:visited, a:active{
 .blinkyDancer{
   border:15px solid green;
   border-radius: 5px;
-  position:absolute;
+/*  position:absolute;*/
 }
 
 .talisDancer{
   border:20px solid blue;
+  width: 100px;
+  height: 100px;
   border-radius: 2px;
   position:absolute;
 }
+
+
+.corgiDancer{
+  content:url(http://i.imgur.com/vWz7Ol3.png);
+  height:150px;
+  width:150px;
+  margin:10px;
+  border-radius:30%;
+  border:0;
+  position:absolute;
+  -webkit-animation:spin 4s linear infinite;
+  -moz-animation:spin 4s linear infinite;
+  animation:spin 4s linear infinite;
+}
+
+@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }

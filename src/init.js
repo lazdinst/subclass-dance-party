@@ -49,29 +49,29 @@ $(document).ready(function() {
   //   window.dancers.forEach(dancer => dancer.getClosest());
   // });
   
-  $('body').on('mouseenter', '.talisDancer', function() {
-    $(this).css('border', '20px solid red');
-  });
+  // $('body').on('mouseenter', '.mrTDancer', function() {
+  //   $(this).css('border', '20px solid red');
+  // });
   
-  $('body').on('mouseleave', '.talisDancer', function() {
-    $(this).css('border', '20px solid blue');
-  });
+  // $('body').on('mouseleave', '.mrTDancer', function() {
+  //   $(this).css('border', '20px solid blue');
+  // });
   
-  $('body').on('mouseenter', '.corgiDancer', function() {
-    var styleSettings = {
-      width: 300,
-      height: 300
-    };
-    $(this).css(styleSettings);
-  });
+  // $('body').on('mouseenter', '.corgiDancer', function() {
+  //   var styleSettings = {
+  //     width: 300,
+  //     height: 300
+  //   };
+  //   $(this).css(styleSettings);
+  // });
   
-  $('body').on('mouseleave', '.corgiDancer', function() {
-    var styleSettings = {
-      width: 150,
-      height: 150
-    };
-    $(this).css(styleSettings);
-  });
+  // $('body').on('mouseleave', '.corgiDancer', function() {
+  //   var styleSettings = {
+  //     width: 150,
+  //     height: 150
+  //   };
+  //   $(this).css(styleSettings);
+  // });
   
 });
 

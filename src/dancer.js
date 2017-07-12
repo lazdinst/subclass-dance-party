@@ -6,15 +6,13 @@ var Dancer = function (top, left, timeBetweenSteps) {
   this.timeBetweenSteps = timeBetweenSteps;
   this.step();
   this.setPosition();
+  this.wasClicked = false;
   this.context = this;
   this.$node.on('click', this.getClosest.bind(this.context));
-  //this.id = Math.rand();
 };
 
 Dancer.prototype.step = function () {
-  //Refactor using binding, to make it look pretty
   var selfMe = this;
-
   setTimeout(function() {
     selfMe.step();
   }, selfMe.timeBetweenSteps);
@@ -25,16 +23,14 @@ Dancer.prototype.setPosition = function () {
     top: this.top,
     left: this.left
   };
-  
   this.$node.css(styleSettings);
-  //return this.$node;
 };
 
 Dancer.prototype.lineUp = function(top, left) {
   var styleSettings = {
     position: 'fixed',
-    top: top, // fixed,
-    left: left //Width of the page / the dancers array length
+    top: top,
+    left: left
   };
   console.log(styleSettings);
   this.$node.css(styleSettings);
@@ -43,79 +39,46 @@ Dancer.prototype.lineUp = function(top, left) {
 Dancer.prototype.getClosest = function() {
   var hypos = [];
   var currentDancer = this;
-  var index = window.dancers.indexOf(this);
-  var closestDistance = undefined;
-  
-  var otherDancers = window.dancers.slice();
-  otherDancers.splice(index, 1);
-  
-  for (var j = 0; j < otherDancers.length; j++) {
-    var compareDancer = otherDancers[j];
-    var dTop, dLeft, hypo;
-    
-    if (currentDancer.top < compareDancer.top) {
-      dTop = compareDancer.top - currentDancer.top;
-    } else {
-      dTop = currentDancer.top - compareDancer.top;
-    }
-    
-    if (currentDancer.left < compareDancer.left) {
-      dLeft = compareDancer.left - currentDancer.left;
-    } else {
-      dLeft = currentDancer.left - compareDancer.left;
-    }
-    var inside = Math.pow(dLeft, 2) + Math.pow(dTop, 2);
-    hypo = Math.pow(inside, 0.5);
-    hypos.push(hypo);
-    
-    if (!closestDistance || closestDistance > hypo) {
-      closestDistance = hypo;
-      currentDancer.closest = compareDancer;
-    } 
-  }
-  // debugger;
-  $(this.$node).css('border', '20px solid pink');
-  $(this.closest.$node).css('border', '20px solid pink');
-  
-};
+  currentDancer.wasClicked = !currentDancer.wasClicked;
 
-// Dancer.prototype.getClosest = function() {
-//   debugger;
-//   var hypos = [];
-//   var currentDancers = window.dancers;
-//   for (var i = 0; i < window.dancers.length; i++) {
-//     var closestDistance = undefined;
-//     var targetDancer = currentDancers[i];
-    
-//     var otherDancers = currentDancers.slice();
-//     otherDancers.splice(i, 1);
-    
-//     for (var j = 0; j < otherDancers.length; j++) {
-//       var compareDancer = otherDancers[j];
-//       var dTop, dLeft, hypo;
-      
-//       if (targetDancer.top < compareDancer.top) {
-//         dTop = compareDancer.top - targetDancer.top;
-//       } else {
-//         dTop = targetDancer.top - compareDancer.top;
-//       }
-      
-//       if (targetDancer.left < compareDancer.left) {
-//         dLeft = compareDancer.left - targetDancer.left;
-//       } else {
-//         dLeft = targetDancer.left - compareDancer.left;
-//       }
-//       var inside = Math.pow(dLeft, 2) + Math.pow(dTop, 2);
-//       hypo = Math.pow(inside, 0.5);
-//       hypos.push(hypo);
-      
-//       if (!closestDistance || closestDistance > hypo) {
-//         closestDistance = hypo;
-//         targetDancer.closest = compareDancer;
-//       } 
-//     }
-//   }
-// };
+  if (currentDancer.wasClicked) {
+    var index = window.dancers.indexOf(this);
+    var closestDistance = undefined;
+    var otherDancers = window.dancers.slice();
+    otherDancers.splice(index, 1);
+    if (window.dancers.length > 1) {
+      for (var j = 0; j < otherDancers.length; j++) {
+        var compareDancer = otherDancers[j];
+        var dTop, dLeft, hypo;
+        
+        if (currentDancer.top < compareDancer.top) {
+          dTop = compareDancer.top - currentDancer.top;
+        } else {
+          dTop = currentDancer.top - compareDancer.top;
+        }
+        
+        if (currentDancer.left < compareDancer.left) {
+          dLeft = compareDancer.left - currentDancer.left;
+        } else {
+          dLeft = currentDancer.left - compareDancer.left;
+        }
+        var inside = Math.pow(dLeft, 2) + Math.pow(dTop, 2);
+        hypo = Math.pow(inside, 0.5);
+        hypos.push(hypo);
+        
+        if (!closestDistance || closestDistance > hypo) {
+          closestDistance = hypo;
+          currentDancer.closest = compareDancer;
+        } 
+      }
+      $(this.$node).addClass('matchDancer');
+      $(this.closest.$node).addClass('matchDancer');
+    }
+  } else {
+    $(this.$node).removeClass('matchDancer');
+    $(this.closest.$node).removeClass('matchDancer');
+  }
+};
 
 // need to generate targetDancer.closest at the moment of clicking
 

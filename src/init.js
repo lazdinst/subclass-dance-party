@@ -39,17 +39,21 @@ $(document).ready(function() {
     }
   });  
   
-  $('.getCloseButton').on('click', function() {
-    debugger;
-    window.dancers.forEach(dancer => dancer.getClose());
+  $('body').on('click', '.dancer', function() {
+    window.dancers.forEach(dancer => dancer.getClosest());
   });
   
+  // $('.getCloseButton').on('click', function() {
+  //   debugger;
+  //   window.dancers.forEach(dancer => dancer.getClose());
+  // });
+  
   $('body').on('mouseenter', '.talisDancer', function() {
-    $('.talisDancer').css('border', '20px solid red');
+    $(this).css('border', '20px solid red');
   });
   
   $('body').on('mouseleave', '.talisDancer', function() {
-    $('.talisDancer').css('border', '20px solid blue');
+    $(this).css('border', '20px solid blue');
   });
   
   $('body').on('mouseenter', '.corgiDancer', function() {
@@ -57,7 +61,7 @@ $(document).ready(function() {
       width: 300,
       height: 300
     };
-    $('.corgiDancer').css(styleSettings);
+    $(this).css(styleSettings);
   });
   
   $('body').on('mouseleave', '.corgiDancer', function() {
@@ -65,7 +69,7 @@ $(document).ready(function() {
       width: 150,
       height: 150
     };
-    $('.corgiDancer').css(styleSettings);
+    $(this).css(styleSettings);
   });
   
 });

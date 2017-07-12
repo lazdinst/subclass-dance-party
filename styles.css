@@ -1,10 +1,16 @@
+/*h1{
+  color:white !important;
+}
+*/
 body, html{
   height:100%;
 }
 body{
   margin: 0px;
   /*background-color:#444;*/
-  background-image: url("http://i.imgur.com/nyFQHhZ.jpg");
+  /*background-image: url("http://i.imgur.com/nyFQHhZ.jpg");*/
+  /*background-image: url("http://i.imgur.com/lZRS9rK.jpg");    dots*/
+  background-image: url("http://i.imgur.com/OgD9AlQ.jpg");
   font-size: 18px;
 }
 body, a:link, a:visited, a:active{
@@ -14,6 +20,12 @@ body, a:link, a:visited, a:active{
   padding:5px 12px;
   float:right;
 }
+
+.navHeader{
+  color: white;
+  size: 30px;
+}
+
 .topbar{
   height:32px;
   background-color: #555;
@@ -55,6 +67,7 @@ body, a:link, a:visited, a:active{
   animation:spin 4s linear infinite;
 }
 
+/*make a class that changes the direction of the rotation . once the corgi rotates to the end, change to new class*/
 @-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
 @-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
 @keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }

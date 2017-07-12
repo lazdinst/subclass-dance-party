@@ -37,13 +37,12 @@ Dancer.prototype.lineUp = function(top, left) {
   this.$node.css(styleSettings);
 };
 
-Dancer.prototype.getClose = function() {
+Dancer.prototype.getClosest = function() {
   var hypos = [];
   var currentDancers = window.dancers;
   
-  debugger;
   for (var i = 0; i < window.dancers.length; i++) {
-    var closestDistance = undefined;
+    var closestDistance;
     var targetDancer = currentDancers[i];
     
     var otherDancers = currentDancers.slice();
@@ -69,14 +68,23 @@ Dancer.prototype.getClose = function() {
       hypo = Math.pow(inside, 0.5);
       hypos.push(hypo);
       
-      
-      //there is soemthign wron with this if statement
+      // double check if this statement will update our compare 
       if (!closestDistance || closestDistance > hypo) {
         closestDistance = hypo;
         targetDancer.closest = compareDancer;
-      } else {
-        
-      }
+      } 
     }
   }
 };
+
+// need to generate targetDancer.closest at the moment of clicking
+
+// auto run getclose, so automatically generate this.closest for each dancer
+// the moment you click on the dancer, 
+  // it gets close to its closest dancer
+    // using the coordinates -- closest dancer's top & left
+  // 
+
+
+
+

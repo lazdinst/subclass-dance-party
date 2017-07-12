@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Object Dance Party</title>
+    <title>Object Dance Party!</title>
     <link rel="stylesheet" type="text/css" href="styles.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <script src="lib/jquery.js"></script>
@@ -11,17 +11,20 @@
     <script src="src/corgiDancer.js"></script>
   </head>
   <body>
-    <div class="topbar">
-      <span class="title">object dance party</span>
-      <a href="#" class="addDancerButton btn btn-default" data-dancer-maker-function-name="BlinkyDancer">Add a blinky dancer</a>
-      <a href="#" class="addDancerButton" data-dancer-maker-function-name="TalisDancer">Add a Talis dancer</a>
-      <a href="#" class="addDancerButton" data-dancer-maker-function-name="corgiDancer">Add a corgi dancer</a>
-      <a href="#" class="lineUpButton">Line up dancers!</a>
-      <a href="#" class="getCloseButton">Get closest dancers</a>
-    </div>
-<!--    <div class="container"> hello 
-   
-   </div> -->
+    <h1 class="navHeader">Object Dance Party</h1>
+    <nav class="navbar navbar-inverse navbar-static-top">
+      <div class="container">
+        <ul class="nav nav-pills navbar-right">
+          <li role="presentation" class="addDancerButton btn" data-dancer-maker-function-name="BlinkyDancer"><a href="#">Add a blinky dancer</a></li>
+          <li role="presentation" class="addDancerButton btn" data-dancer-maker-function-name="TalisDancer"><a href="#">Add a Talis dancer</a></li>
+          <li role="presentation" class="addDancerButton btn" data-dancer-maker-function-name="corgiDancer"><a href="#" >Add a corgi dancer</a></li>
+        </ul>
+        <ul class="nav nav-pills navbar-left">
+          <li role="presentation" class="lineUpButton btn"><a href="#">Line up dancers!</a></li>
+  <!--     <a href="#" class="getCloseButton">Get closest dancers</a> -->
+        </ul>
+      </div>
+    </nav>
     <script src="src/init.js"></script>
   </body>
 </html>

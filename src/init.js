@@ -39,13 +39,14 @@ $(document).ready(function() {
     }
   });  
   
-  $('body').on('click', '.dancer', function() {
-    window.dancers.forEach(dancer => dancer.getClosest());
-  });
+  // $('body').on('click', '.dancer', function() {
+  //   debugger;
+  //   // window.dancers.forEach(dancer => dancer.getClosest());
+  //   // link to this.closest
+  // });
   
   // $('.getCloseButton').on('click', function() {
-  //   debugger;
-  //   window.dancers.forEach(dancer => dancer.getClose());
+  //   window.dancers.forEach(dancer => dancer.getClosest());
   // });
   
   $('body').on('mouseenter', '.talisDancer', function() {
